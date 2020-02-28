@@ -1,0 +1,50 @@
+# vim: ft=gitconfig
+
+[core]
+    autocrlf = input
+    whitespace = trailing-space,space-before-tab,indent-with-non-tab
+	excludesfile = /Users/erning/.gitignore_global
+
+[user]
+	name = Zhang Erning
+	email = zhang@erning.com
+    signingkey = 5ABFAE18
+
+[alias]
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    ci = commit
+    co = checkout
+    st = status -sb
+    track = checkout -t
+    unstage = reset HEAD --
+
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = true
+    pager = true
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[push]
+    default = nothing
+
+[difftool]
+    prompt = no
+

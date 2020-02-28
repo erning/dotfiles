@@ -1,0 +1,40 @@
+#!/bin/bash
+
+if [[ $# -le 0 ]]; then
+    echo "Usage: `basename $0` <command> [agrument]..."
+fi
+
+if [ -r "$HOME/.gerc" ]; then
+    source "$HOME/.gerc"
+fi
+
+if [ -z "$GOENV_FILE" ]; then
+    GOENV_FILE=".goenv"
+fi
+
+DIR=`pwd`
+for (( ;; ))
+do
+    if [ -e "$DIR/$GOENV_FILE" ]; then
+        GOENV="$DIR"
+        break
+    fi
+    if [ "$DIR" == "/" ]; then
+        break
+    fi
+    DIR=`dirname $DIR`
+done
+
+if [ -z "$GOENV" ]; then
+    echo "goenv: not found"
+    echo
+    exit 1
+else
+    if [ "$1" == "-v" ]; then
+        echo "goenv: $GOENV"
+        echo
+        shift
+    fi
+    #PATH="$GOENV/bin:$PATH" GOPATH="$GOENV:$GOPATH" exec "$@"
+    PATH="$GOENV/bin:$PATH" GOPATH="$GOENV:$GOPATH" "$@"
+fi
