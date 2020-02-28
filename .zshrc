@@ -4,11 +4,6 @@
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
 #
-# prompt
-#
-eval "$(starship init zsh)"
-
-#
 # homebrew
 #
 if [[ $(uname -s) == "Linux" ]]; then
@@ -69,3 +64,9 @@ man() {
     LESS_TERMCAP_us=$(printf "\e[1;32m") \
     man "$@"
 }
+
+#
+# prompt
+#
+eval "$(starship init zsh)"
+

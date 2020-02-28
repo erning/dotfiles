@@ -6,13 +6,6 @@ end
 set fish_user_paths /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin
 
 #
-# prompt
-#
-if command -qs starship
-    starship init fish | source
-end
-
-#
 # homebrew
 #
 set homebrew_paths /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin
@@ -78,3 +71,12 @@ end
 # locale
 set -x LANG "en_US.UTF-8"
 set -x LC_ALL "en_US.UTF-8"
+
+
+#
+# prompt
+#
+if command -qs starship
+    starship init fish | source
+end
+
