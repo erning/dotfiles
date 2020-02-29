@@ -1,5 +1,4 @@
-# colorful manual pages
-function man
+function man --description 'colorful manual pages'
     env \
         LESS_TERMCAP_mb=(printf "\e[1;31m") \
         LESS_TERMCAP_md=(printf "\e[1;31m") \
