@@ -48,3 +48,6 @@
 [difftool]
     prompt = no
 
+[include]
+    path = ~/.config/git/config.local
+
