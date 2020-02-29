@@ -1,0 +1,5 @@
+#!/bin/sh
+
+yadm_hostname=`hostname -s`
+yadm_os=`uname -s`
+
