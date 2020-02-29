@@ -8,15 +8,6 @@ set fish_user_paths /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin
 #
 # homebrew
 #
-set homebrew_paths /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin
-if test (uname -s) = Linux
-    set -p homebrew_paths \
-        /home/linuxbrew/.linuxbrew/bin \
-        /home/linuxbrew/.linuxbrew/sbin
-    set -p fish_user_paths $homebrew_paths
-end
-alias brew "env PATH="(string join ':' $homebrew_paths)" brew"
-set -e homebrew_paths
 set -x HOMEBREW_NO_ANALYTICS 1
 set -x HOMEBREW_AUTO_UPDATE_SECS 86400
 
