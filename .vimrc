@@ -108,10 +108,11 @@ let NERDTreeMinimalUI=1
 let g:ctrlp_show_hidden=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Mouse Scrolling
+" => Mouse and Clipboard
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set mouse=nicr
 set mouse=a
+set clipboard=unnamed
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Splits and Tabbed Files
