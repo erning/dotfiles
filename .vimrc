@@ -52,7 +52,7 @@ ino <Left> <Nop>
 ino <Right> <Nop>
 
 " number
-set number
+" set number
 set relativenumber
 
 " scheme
@@ -112,7 +112,8 @@ let g:ctrlp_show_hidden=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set mouse=nicr
 set mouse=a
-set clipboard=unnamed
+vnoremap Y y:'<,'>w !pbcopy<CR><CR>
+" set clipboard=unnamed
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Splits and Tabbed Files
