@@ -45,8 +45,18 @@
 [push]
     default = nothing
 
+[diff]
+    tool = vimdiff
+
 [difftool]
     prompt = no
+
+[merge]
+    tool = smerge
+
+[mergetool "smerge"]
+    cmd = smerge mergetool \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
+    trustExitCode = true
 
 [include]
     path = ~/.config/git/config.local
