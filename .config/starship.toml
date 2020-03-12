@@ -1,6 +1,9 @@
 [character]
 symbol = "π"
 
+[hostname]
+ssh_only = false
+
 [aws]
 symbol = " "
 
