@@ -1,8 +1,9 @@
-# .bashrc
-if [[ $- != *i* ]] ; then
-  # shell is non-interactive. be done now!
-  return
-fi
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
 # Functions to help us manage paths.  Second argument is the name of the
 # path variable to be modified (default: PATH)
@@ -50,11 +51,6 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 #
 # homebrew
 #
-if [[ $(uname -s) == "Linux" ]]; then
-    pathprepend "/home/linuxbrew/.linuxbrew/sbin"
-    pathprepend "/home/linuxbrew/.linuxbrew/bin"
-fi
-# alias brew "env PATH="(string join ':' $homebrew_paths)" brew"
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_AUTO_UPDATE_SECS=86400
 
@@ -86,7 +82,10 @@ export CDPATH=.:~
 export HISTIGNORE="&:ls:ls *:[bf]g:exit"
 
 # alias
-alias ls='ls -G'
+case "$OSTYPE" in
+    linux*) alias ls='ls --color=auto' ;;
+    *) alias ls='ls -G' ;;
+esac
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -94,7 +93,9 @@ alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 
-alias spacevim="env nvim -u $HOME/.SpaceVim/vimrc"
+command -v nvim >/dev/null 2>&1 && alias vi='nvim' 
+[[ -d "$HOME/.SpaceVim/vimrc" ]] \
+    && alias spacevim="nvim -u $HOME/.SpaceVim/vimrc"
 
 # colors in manual pages
 man() {
@@ -109,11 +110,24 @@ man() {
     man "$@"
 }
 
+unset pathremove
+unset pathexist
+unset pathprepend
+unset pathappend
+
+export EDITOR='vim'
+
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] \
     && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 #
 # prompt
 #
-eval "$(starship init bash)"
 
+# if [ "$(id -u)" != "0" ]; then
+#     PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \W \$\[\033[00m\] '
+# else
+#     PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
+# fi
+
+eval "$(starship init bash)"
