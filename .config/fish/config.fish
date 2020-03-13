@@ -13,8 +13,12 @@ if test (uname -s) = Linux; and test -d /home/linuxbrew/.linuxbrew
         /home/linuxbrew/.linuxbrew/bin \
         /home/linuxbrew/.linuxbrew/sbin
 end
+set -x HOMEBREW_VERBOSE 1
 set -x HOMEBREW_NO_ANALYTICS 1
+set -x HOMEBREW_NO_AUTO_UPDATE 1
 set -x HOMEBREW_AUTO_UPDATE_SECS 86400
+set -x HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK 1
+set -x HOMEBREW_CURL_RETRIES 3
 
 #
 # python
