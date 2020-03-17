@@ -1,5 +1,11 @@
 // Place your settings in this file to overwrite the default settings
 {
+    //
+    // THEMES
+    //
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "Night Owl",
+
     "editor.fontFamily": "'JetBrainsMono Nerd Font', Menlo, Monaco",
     "editor.fontSize": 18,
     // "editor.fontWeight": "500",
@@ -7,22 +13,45 @@
     "editor.rulers": [80, 120],
 
     "explorer.enableDragAndDrop": false,
-
     "window.restoreWindows": "none",
     "window.zoomLevel": 0,
 
     "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font', Menlo",
     "terminal.integrated.fontSize": 16,
 
-    "go.lintTool": "golangci-lint",
-    "go.formatTool": "goimports",
-    "go.lintFlags": [
-        "--fast"
-    ],
-    "go.testFlags": [
-        "-v",
-        "-count=1"
-    ],
-    "workbench.iconTheme": "vscode-icons",
-    "workbench.colorTheme": "Night Owl",
+    //
+    // GOLANG
+    //
+    "go.useLanguageServer": true,
+    "[go]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+        },
+        // Optional: Disable snippets, as they conflict with completion ranking.
+        "editor.snippetSuggestions": "none",
+    },
+    "[go.mod]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+        },
+    },
+    "gopls": {
+        // Add parameter placeholders when completing a function.
+        "usePlaceholders": true,
+        // If true, enable additional analyses with staticcheck.
+        // Warning: This will significantly increase memory usage.
+        "staticcheck": false,
+    },
+    // "go.formatTool": "goimports",
+    // "go.lintTool": "golangci-lint",
+    // "go.formatTool": "goimports",
+    // "go.lintFlags": [
+    //     "--fast"
+    // ],
+    // "go.testFlags": [
+    //     "-v",
+    //     "-count=1"
+    // ],
 }
