@@ -3,7 +3,37 @@ if not status --is-interactive
 end
 
 # path
-set fish_user_paths /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin
+if status --is-login
+    if test (uname -s) = Darwin
+        # avoid path_helper to reorder the path entries
+        set -l PREFER_PATH
+        if test -r /etc/paths
+            set PREFER_PATH (cat /etc/paths) $PREFER_PATH
+        end
+        if test -d /etc/paths.d
+            set PREFER_PATH (cat /etc/paths.d/*) $PREFER_PATH
+        end
+        # keep clean path entries in the front
+        set -l CLEAN_PATH /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin
+        for v in $CLEAN_PATH[-1..1]
+            if set -l i (contains -i $v $PREFER_PATH)
+                set -e PREFER_PATH[$i]
+            end
+            set PREFER_PATH $v $PREFER_PATH
+        end
+        # keep the custom path
+        set -l CUSTOM_PATH $PATH
+        for v in $PREFER_PATH
+            if set -l i (contains -i $v $CUSTOM_PATH)
+                set -e CUSTOM_PATH[$i]
+            end
+        end
+        
+        set -gx PATH $CUSTOM_PATH $PREFER_PATH
+    end
+end
+
+set -e fish_user_paths
 
 #
 # homebrew
@@ -32,16 +62,22 @@ set -x PIP_DOWNLOAD_CACHE "$HOME/.cache/pip"
 #
 # rust
 #
-set -p fish_user_paths "$HOME/.cargo/bin"
+if not contains "$HOME/.cargo/bin" $PATH
+    set -x PATH "$HOME/.cargo/bin" $PATH
+end
 
 #
 # golang
 #
 set -x GOPATH "$HOME/.go"
-set -p fish_user_paths "$GOPATH/bin"
+if not contains "$GOPATH/bin" $PATH
+    set -x PATH "$GOPATH/bin" $PATH
+end
 
 # ~/bin
-set -p fish_user_paths "$HOME/bin"
+if not contains "$HOME/bin" $PATH
+    set -x PATH "$HOME/bin" $PATH
+end
 
 # common alias
 alias grep 'grep --color=auto'
