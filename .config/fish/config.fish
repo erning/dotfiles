@@ -7,11 +7,10 @@ if status --is-login
     if test (uname -s) = Darwin
         # avoid path_helper to reorder the path entries
         set -l PREFER_PATH
-        if test -r /etc/paths
-            set PREFER_PATH (cat /etc/paths) $PREFER_PATH
-        end
-        if test -d /etc/paths.d
-            set PREFER_PATH (cat /etc/paths.d/*) $PREFER_PATH
+        for v in /etc/paths /etc/paths.d/*
+            if test -r $v
+                set PREFER_PATH $PREFER_PATH (cat $v)
+            end
         end
         # keep clean path entries in the front
         set -l CLEAN_PATH /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin
@@ -28,20 +27,19 @@ if status --is-login
                 set -e CUSTOM_PATH[$i]
             end
         end
-        
         set -gx PATH $CUSTOM_PATH $PREFER_PATH
     end
 end
 
-set -e fish_user_paths
 
 #
 # homebrew
 #
 if test (uname -s) = Linux; and test -d /home/linuxbrew/.linuxbrew
-    set -p fish_user_paths \
+    set -x PATH \
         /home/linuxbrew/.linuxbrew/bin \
-        /home/linuxbrew/.linuxbrew/sbin
+        /home/linuxbrew/.linuxbrew/sbin \
+        $PATH
 end
 set -x HOMEBREW_VERBOSE 1
 set -x HOMEBREW_NO_ANALYTICS 1
