@@ -3,11 +3,11 @@
 [core]
     autocrlf = input
     whitespace = trailing-space,space-before-tab,indent-with-non-tab
-	excludesfile = /Users/erning/.gitignore_global
+    excludesfile = /Users/erning/.gitignore_global
 
 [user]
-	name = Zhang Erning
-	email = zhang@erning.com
+    name = Zhang Erning
+    email = zhang@erning.com
     signingkey = 5ABFAE18
 
 [alias]
@@ -41,6 +41,9 @@
     added = yellow
     changed = green
     untracked = cyan
+
+[pull]
+    ff = only
 
 [push]
     default = nothing
