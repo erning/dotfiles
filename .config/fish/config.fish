@@ -4,9 +4,10 @@ end
 
 # path
 if status --is-login
+    set -l PREFER_PATH
+    
     if test (uname -s) = Darwin
         # avoid path_helper to reorder the path entries
-        set -l PREFER_PATH
         for v in /etc/paths /etc/paths.d/*
             if test -r $v
                 set PREFER_PATH $PREFER_PATH (cat $v)
