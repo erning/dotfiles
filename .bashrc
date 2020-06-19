@@ -32,27 +32,63 @@ pathexist () {
 }
 
 pathprepend () {
-    # if [ -n `pathexist $1` ] ; then return ; fi
-    pathremove $1 $2
+    if [ -n `pathexist $1` ] ; then return ; fi
+    # pathremove $1 $2
     local PATHVARIABLE=${2:-PATH}
     export $PATHVARIABLE="$1${!PATHVARIABLE:+:${!PATHVARIABLE}}"
 }
 
 pathappend () {
-    # if [ -n `pathexist $1` ] ; then return ; fi
-    pathremove $1 $2
+    if [ -n `pathexist $1` ] ; then return ; fi
+    # pathremove $1 $2
     local PATHVARIABLE=${2:-PATH}
     export $PATHVARIABLE="${!PATHVARIABLE:+${!PATHVARIABLE}:}$1"
 }
 
 # path
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
+
+if (shopt -q login_shell); then
+    if [[ "$OSTYPE" == "darwin"* ]] ; then
+        if [ -r /etc/paths ] ; then
+            PREFER_PATH="`paste -sd ':' /etc/paths`"
+        fi
+        for v in /etc/paths.d/*; do
+            PREFER_PATH="$PREFER_PATH:`paste -sd ':' $v`"
+        done
+    fi
+    
+    CLEAN_PATH=( /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin)
+    for v in "${CLEAN_PATH[@]}" ; do
+        pathremove "$v" PREFER_PATH
+        PREFER_PATH="$v:$PREFER_PATH"
+    done
+
+    CUSTOM_PATH=$PATH
+    oIFS=$IFS
+    IFS=:
+    for v in $PREFER_PATH; do
+        pathremove "$v" CUSTOM_PATH
+    done
+    IFS=$oIFS
+    unset oIFS
+
+    export PATH="$CUSTOM_PATH:$PREFER_PATH"
+
+    unset CUSTOM_PATH
+    unset PREFER_PATH
+    unset CLEAN_PATH
+fi
+
 
 #
 # homebrew
 #
+export HOMEBREW_VERBOSE=1
 export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_AUTO_UPDATE_SECS=86400
+export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
+export HOMEBREW_CURL_RETRIES=3
 
 #
 # python
@@ -75,7 +111,7 @@ export GOPATH="$HOME/.go"
 pathprepend "$GOPATH/bin"
 
 # ~/bin
-export PATH="$HOME/bin:$PATH"
+pathprepend "$HOME/bin"
 
 # Tips and Tricks
 export CDPATH=.:~
@@ -93,6 +129,7 @@ alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 
+# vi
 command -v nvim >/dev/null 2>&1 && alias vi='nvim' 
 [[ -d "$HOME/.SpaceVim/vimrc" ]] \
     && alias spacevim="nvim -u $HOME/.SpaceVim/vimrc"
