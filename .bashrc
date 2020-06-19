@@ -32,21 +32,20 @@ pathexist () {
 }
 
 pathprepend () {
-    if [ -n `pathexist $1` ] ; then return ; fi
-    # pathremove $1 $2
-    local PATHVARIABLE=${2:-PATH}
-    export $PATHVARIABLE="$1${!PATHVARIABLE:+:${!PATHVARIABLE}}"
+    if [ -z `pathexist $1` ] ; then
+        local PATHVARIABLE=${2:-PATH}
+        export $PATHVARIABLE="$1${!PATHVARIABLE:+:${!PATHVARIABLE}}"
+    fi
 }
 
 pathappend () {
-    if [ -n `pathexist $1` ] ; then return ; fi
-    # pathremove $1 $2
-    local PATHVARIABLE=${2:-PATH}
-    export $PATHVARIABLE="${!PATHVARIABLE:+${!PATHVARIABLE}:}$1"
+    if [ -z `pathexist $1` ] ; then
+        local PATHVARIABLE=${2:-PATH}
+        export $PATHVARIABLE="${!PATHVARIABLE:+${!PATHVARIABLE}:}$1"
+    fi
 }
 
 # path
-
 if (shopt -q login_shell); then
     if [[ "$OSTYPE" == "darwin"* ]] ; then
         if [ -r /etc/paths ] ; then
