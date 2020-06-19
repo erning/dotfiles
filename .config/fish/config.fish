@@ -12,23 +12,26 @@ if status --is-login
                 set PREFER_PATH $PREFER_PATH (cat $v)
             end
         end
-        # keep clean path entries in the front
-        set -l CLEAN_PATH /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin
-        for v in $CLEAN_PATH[-1..1]
-            if set -l i (contains -i $v $PREFER_PATH)
-                set -e PREFER_PATH[$i]
-            end
-            set PREFER_PATH $v $PREFER_PATH
-        end
-        # keep the custom path
-        set -l CUSTOM_PATH $PATH
-        for v in $PREFER_PATH
-            if set -l i (contains -i $v $CUSTOM_PATH)
-                set -e CUSTOM_PATH[$i]
-            end
-        end
-        set -gx PATH $CUSTOM_PATH $PREFER_PATH
     end
+
+    # keep clean path entries in the front
+    set -l CLEAN_PATH /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin
+    for v in $CLEAN_PATH[-1..1]
+        if set -l i (contains -i $v $PREFER_PATH)
+            set -e PREFER_PATH[$i]
+        end
+        set PREFER_PATH $v $PREFER_PATH
+    end
+    
+    # keep the custom path
+    set -l CUSTOM_PATH $PATH
+    for v in $PREFER_PATH
+        if set -l i (contains -i $v $CUSTOM_PATH)
+            set -e CUSTOM_PATH[$i]
+        end
+    end
+
+    set -gx PATH $CUSTOM_PATH $PREFER_PATH
 end
 
 
