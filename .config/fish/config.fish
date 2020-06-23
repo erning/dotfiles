@@ -61,6 +61,8 @@ set -x HOMEBREW_CURL_RETRIES 3
 set -x PIP_REQUIRE_VIRTUALENV true
 set -x PIP_DOWNLOAD_CACHE "$HOME/.cache/pip"
 
+set -x PYTHONDONTWRITEBYTECODE true
+
 #
 # rust
 #

@@ -98,6 +98,8 @@ export HOMEBREW_CURL_RETRIES=3
 export PIP_REQUIRE_VIRTUALENV=true
 export PIP_DOWNLOAD_CACHE="$HOME/.cache/pip"
 
+export PYTHONDONTWRITEBYTECODE=true
+
 #
 # rust
 #
