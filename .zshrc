@@ -1,13 +1,50 @@
-# .zshrc
+#
+# ~/.zshrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
 # path
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
+if [[ -o login ]]; then
+    local PREFER_PATH
+    typeset -U PREFER_PATH
+    if [[ "$OSTYPE" == darwin* ]] ; then
+        # avoid path_helper to reorder the path entries
+        for v in /etc/paths /etc/paths.d/*; do
+            if [[ -r $v ]] ; then
+                PREFER_PATH+=("${(@f)$(cat $v)}")
+            fi
+        done
+    fi
+
+    # keep clean path entries in the front
+    local CLEAN_PATH=("/usr/local/bin" "/usr/local/sbin" "/usr/bin" "/usr/sbin" "/bin" "/sbin")
+    for v in ${(O)CLEAN_PATH}; do
+        PREFER_PATH[${PREFER_PATH[(i)$v]}]=()
+    done
+    PREFER_PATH=($CLEAN_PATH $PREFER_PATH)
+    
+    # keep the custom path
+    local CUSTOM_PATH=($path)
+    for v in $PREFER_PATH; do
+        CUSTOM_PATH[${CUSTOM_PATH[(i)$v]}]=()
+    done
+fi
+typeset -U path
+path=($CUSTOM_PATH $PREFER_PATH)
+export PATH
+#export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
 #
 # homebrew
 #
+export HOMEBREW_VERBOSE=1
 export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_AUTO_UPDATE_SECS=86400
+export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
+export HOMEBREW_CURL_RETRIES=3
 
 #
 # python
@@ -18,19 +55,21 @@ export HOMEBREW_AUTO_UPDATE_SECS=86400
 export PIP_REQUIRE_VIRTUALENV=true
 export PIP_DOWNLOAD_CACHE="$HOME/.cache/pip"
 
+export PYTHONDONTWRITEBYTECODE=true
+
 #
 # rust
 #
-export PATH="$HOME/.cargo/bin:$PATH"
+path=("$HOME/.cargo/bin" $path)
 
 #
 # golang
 #
 export GOPATH="$HOME/.go"
-export PATH="$GOPATH/bin:$PATH"
+path=("$GOPATH/bin" $path)
 
 # ~/bin
-export PATH="$HOME/bin:$PATH"
+path=("$HOME/bin" $path)
 
 # Tips and Tricks
 export CDPATH=.:~
