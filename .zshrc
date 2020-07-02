@@ -6,6 +6,7 @@
 [[ $- != *i* ]] && return
 
 # path
+typeset -U path
 if [[ -o login ]]; then
     local PREFER_PATH
     typeset -U PREFER_PATH
@@ -30,9 +31,9 @@ if [[ -o login ]]; then
     for v in $PREFER_PATH; do
         CUSTOM_PATH[${CUSTOM_PATH[(i)$v]}]=()
     done
+
+    path=($CUSTOM_PATH $PREFER_PATH)
 fi
-typeset -U path
-path=($CUSTOM_PATH $PREFER_PATH)
 export PATH
 #export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
