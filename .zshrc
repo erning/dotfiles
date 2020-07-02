@@ -12,11 +12,13 @@ if [[ -o login ]]; then
     typeset -U PREFER_PATH
     if [[ "$OSTYPE" == darwin* ]] ; then
         # avoid path_helper to reorder the path entries
+        setopt NULL_GLOB
         for v in /etc/paths /etc/paths.d/*; do
             if [[ -r $v ]] ; then
                 PREFER_PATH+=("${(@f)$(cat $v)}")
             fi
         done
+        unsetopt NULL_GLOB
     fi
 
     # keep clean path entries in the front

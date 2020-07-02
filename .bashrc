@@ -48,12 +48,11 @@ pathappend () {
 # path
 if (shopt -q login_shell); then
     if [[ "$OSTYPE" == "darwin"* ]] ; then
-        if [ -r /etc/paths ] ; then
-            PREFER_PATH="`paste -sd ':' /etc/paths`"
-        fi
-        for v in /etc/paths.d/*; do
+        setopt -s nullglob
+        for v in /etc/paths /etc/paths.d/*; do
             PREFER_PATH="$PREFER_PATH:`paste -sd ':' $v`"
         done
+        setopt -u nullglob
     fi
     
     CLEAN_PATH=( /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin)
