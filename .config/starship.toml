@@ -1,5 +1,7 @@
 [character]
 symbol = "π"
+success_symbol = "[π](bold green)"
+error_symbol = "[π](bold red)"
 
 [hostname]
 ssh_only = false
