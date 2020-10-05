@@ -64,6 +64,14 @@ set -x PIP_DOWNLOAD_CACHE "$HOME/.cache/pip"
 set -x PYTHONDONTWRITEBYTECODE true
 
 #
+# java
+#
+set -x JAVA_HOME "$HOME/apps/jdk"
+if not contains "$JAVA_HOME/bin" $PATH
+    set -x PATH "$JAVA_HOME/bin" $PATH
+end
+
+#
 # rust
 #
 if not contains "$HOME/.cargo/bin" $PATH

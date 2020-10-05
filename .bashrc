@@ -100,6 +100,12 @@ export PIP_DOWNLOAD_CACHE="$HOME/.cache/pip"
 export PYTHONDONTWRITEBYTECODE=true
 
 #
+# java
+#
+export JAVA_HOME "$HOME/apps/jdk"
+pathprepend "$JAVA_HOME/bin"
+
+#
 # rust
 #
 pathprepend "$HOME/.cargo/bin"
