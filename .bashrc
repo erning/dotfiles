@@ -102,7 +102,7 @@ export PYTHONDONTWRITEBYTECODE=true
 #
 # java
 #
-export JAVA_HOME "$HOME/apps/jdk"
+export JAVA_HOME="$HOME/apps/jdk"
 pathprepend "$JAVA_HOME/bin"
 
 #

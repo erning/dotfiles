@@ -23,6 +23,7 @@ if [[ -o login ]]; then
 
     # keep clean path entries in the front
     local CLEAN_PATH=("/usr/local/bin" "/usr/local/sbin" "/usr/bin" "/usr/sbin" "/bin" "/sbin")
+    PREFER_PATH=()
     for v in ${(O)CLEAN_PATH}; do
         PREFER_PATH[${PREFER_PATH[(i)$v]}]=()
     done
@@ -63,7 +64,7 @@ export PYTHONDONTWRITEBYTECODE=true
 #
 # java
 #
-export JAVA_HOME "$HOME/apps/jdk"
+export JAVA_HOME="$HOME/apps/jdk"
 path=("$JAVA_HOME/bin" $path)
 
 #
