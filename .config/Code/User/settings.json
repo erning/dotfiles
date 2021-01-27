@@ -5,22 +5,22 @@
     //
     "workbench.iconTheme": "vscode-icons",
     "workbench.colorTheme": "Night Owl",
-
     "editor.fontFamily": "'JetBrainsMono Nerd Font', Menlo, Monaco",
     "editor.fontSize": 18,
     // "editor.fontWeight": "500",
     "editor.fontLigatures": true,
     "editor.rulers": [80, 120],
-
     "explorer.enableDragAndDrop": false,
     "window.restoreWindows": "none",
     "window.zoomLevel": 0,
-
     "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font', Menlo",
     "terminal.integrated.fontSize": 16,
+    
+    // Remote
+    "remote.SSH.configFile": "~/.ssh/conf.d/vscode.conf",
 
     //
-    // GOLANG
+    // GoLang
     //
     "go.useLanguageServer": true,
     "[go]": {
@@ -44,14 +44,8 @@
         // Warning: This will significantly increase memory usage.
         "staticcheck": false,
     },
-    // "go.formatTool": "goimports",
-    // "go.lintTool": "golangci-lint",
-    // "go.formatTool": "goimports",
-    // "go.lintFlags": [
-    //     "--fast"
-    // ],
-    // "go.testFlags": [
-    //     "-v",
-    //     "-count=1"
-    // ],
+
+    //
+    // Swift
+    //
 }
