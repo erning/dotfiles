@@ -16,12 +16,15 @@ ssh_only = false
 
 [aws]
 symbol = " "
+disabled = true
 
 [conda]
 symbol = " "
+disabled = true
 
 [dart]
 symbol = " "
+disabled = true
 
 [directory]
 read_only = " "
@@ -31,58 +34,75 @@ symbol = " "
 
 [elixir]
 symbol = " "
+disabled = true
 
 [elm]
 symbol = " "
+disabled = true
 
 [git_branch]
 symbol = " "
 
 [golang]
 symbol = " "
+disabled = true
 
 [haskell]
 symbol = " "
+disabled = true
 
 [hg_branch]
 symbol = " "
+disabled = true
 
 [java]
 symbol = " "
+disabled = true
 
 [julia]
 symbol = " "
+disabled = true
 
 [memory_usage]
 symbol = " "
 
 [nim]
 symbol = " "
+disabled = true
 
 [nix_shell]
 symbol = " "
+disabled = true
 
 [nodejs]
 symbol = " "
+disabled = true
 
 [package]
 symbol = " "
+disabled = true
 
 [perl]
 symbol = " "
+disabled = true
 
 [php]
 symbol = " "
+disabled = true
 
 [python]
 symbol = " "
+disabled = true
 
 [ruby]
 symbol = " "
+disabled = true
 
 [rust]
 symbol = " "
+disabled = true
 
 [swift]
 symbol = "ﯣ "
+disabled = true
 
