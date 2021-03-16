@@ -37,7 +37,7 @@ endif
 if (has("termguicolors"))
   set termguicolors
 endif
-" set notermguicolors  " mosh doesn't support 24-bit color yet
+set notermguicolors  " mosh doesn't support 24-bit color yet
 
 "Disable arrow keys in Normal mode
 no <Up> <Nop>
@@ -110,9 +110,9 @@ let g:ctrlp_show_hidden=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Mouse and Clipboard
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set mouse=nicr
-set mouse=a
-vnoremap Y y:'<,'>w !pbcopy<CR><CR>
+"set mouse=nicr
+"set mouse=a
+"vnoremap Y y:'<,'>w !pbcopy<CR><CR>
 " set clipboard=unnamed
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
