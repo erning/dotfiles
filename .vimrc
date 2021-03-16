@@ -34,10 +34,13 @@ endif
 
 """" enable 24bit true color
 " If you have vim >=8.0 or Neovim >= 0.1.5
-if (has("termguicolors"))
+if has("termguicolors")
   set termguicolors
 endif
-set notermguicolors  " mosh doesn't support 24-bit color yet
+" rxvt dost not support 24-bit color yet?
+if $TERM =~ "rxvt"
+  set notermguicolors
+endif
 
 "Disable arrow keys in Normal mode
 no <Up> <Nop>
