@@ -5,7 +5,7 @@
     //
     "workbench.iconTheme": "vscode-icons",
     "workbench.colorTheme": "Night Owl",
-    "editor.fontFamily": "'JetBrainsMono Nerd Font', Menlo, Monaco",
+    "editor.fontFamily": "'Cascadia Code', 'JetBrainsMono', Menlo, Monaco",
     "editor.fontSize": 18,
     // "editor.fontWeight": "500",
     "editor.fontLigatures": true,
