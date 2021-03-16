@@ -66,6 +66,8 @@ export PYTHONDONTWRITEBYTECODE=true
 #
 export JAVA_HOME="$HOME/apps/jdk"
 path=("$JAVA_HOME/bin" $path)
+path=("$HOME/apps/kotlin/bin" $path)
+path=("$HOME/apps/gradle/bin" $path)
 
 #
 # rust

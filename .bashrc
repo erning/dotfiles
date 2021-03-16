@@ -104,6 +104,8 @@ export PYTHONDONTWRITEBYTECODE=true
 #
 export JAVA_HOME="$HOME/apps/jdk"
 pathprepend "$JAVA_HOME/bin"
+pathprepend "$HOME/apps/kotlin/bin"
+pathprepend "$HOME/apps/gradle/bin"
 
 #
 # rust
