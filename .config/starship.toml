@@ -1,6 +1,5 @@
 
 [character]
-symbol = "π"
 success_symbol = "[π](bold green)"
 error_symbol = "[π](bold red)"
 
@@ -29,7 +28,7 @@ disabled = true
 [directory]
 read_only = " "
 
-[docker]
+[docker_context]
 symbol = " "
 
 [elixir]
@@ -45,10 +44,6 @@ symbol = " "
 
 [golang]
 symbol = " "
-disabled = true
-
-[haskell]
-symbol = " "
 disabled = true
 
 [hg_branch]
