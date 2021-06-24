@@ -58,6 +58,9 @@ disabled = true
 symbol = " "
 disabled = true
 
+[kotlin]
+disabled = true
+
 [memory_usage]
 symbol = " "
 
