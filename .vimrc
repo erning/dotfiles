@@ -19,6 +19,9 @@ Plug 'vim-airline/vim-airline'          " Airline
 " Plug 'vim-airline/vim-airline-themes' " Airline Themes
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
+if has('macunix')
+  Plug 'ybian/smartim'
+endif
 call plug#end()
 
 
