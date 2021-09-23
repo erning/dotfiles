@@ -4,7 +4,7 @@
     // THEMES
     //
     "workbench.iconTheme": "vscode-icons",
-    "workbench.colorTheme": "Night Owl",
+    "workbench.colorTheme": "Night Owl (No Italics)",
     "editor.fontFamily": "'Cascadia Code', 'JetBrainsMono', Menlo, Monaco",
     "editor.fontSize": 18,
     // "editor.fontWeight": "500",
