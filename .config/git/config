@@ -50,16 +50,23 @@
 
 [diff]
     tool = vimdiff
+    guitool = smerge
 
 [difftool]
     prompt = no
 
 [merge]
-    tool = smerge
+    guitool = smerge
 
 [mergetool "smerge"]
     cmd = smerge mergetool \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
     trustExitCode = true
+
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
 
 [include]
     path = ~/.config/git/config.local
