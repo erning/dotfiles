@@ -66,15 +66,22 @@ set -x PYTHONDONTWRITEBYTECODE true
 #
 # java
 #
-set -x JAVA_HOME "$HOME/apps/jdk"
-if not contains "$JAVA_HOME/bin" $PATH
-    set -x PATH "$JAVA_HOME/bin" $PATH
-end
-if not contains "$HOME/apps/kotlin/bin" $PATH
-    set -x PATH "$HOME/apps/kotlin/bin" $PATH
-end
-if not contains "$HOME/apps/gradle/bin" $PATH
-    set -x PATH "$HOME/apps/gradle/bin" $PATH
+switch (uname -s)
+case Darwin
+    # java, kotlin, gradle were installed by homebrew
+case '*'
+    if test -d "$HOME/apps/jdk"
+        set -x JAVA_HOME "$HOME/apps/jdk"
+        if not contains "$JAVA_HOME/bin" $PATH
+            set -x PATH "$JAVA_HOME/bin" $PATH
+        end
+    end
+    if not contains "$HOME/apps/kotlin/bin" $PATH
+        set -x PATH "$HOME/apps/kotlin/bin" $PATH
+    end
+    if not contains "$HOME/apps/gradle/bin" $PATH
+        set -x PATH "$HOME/apps/gradle/bin" $PATH
+    end
 end
 
 #
