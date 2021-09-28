@@ -66,29 +66,30 @@ set -x PYTHONDONTWRITEBYTECODE true
 #
 # java
 #
-switch (uname -s)
-case Darwin
-    # java, kotlin, gradle were installed by homebrew
-case '*'
-    if test -d "$HOME/apps/jdk"
-        set -x JAVA_HOME "$HOME/apps/jdk"
-        if not contains "$JAVA_HOME/bin" $PATH
-            set -x PATH "$JAVA_HOME/bin" $PATH
-        end
+if test -d "$HOME/.local/opt/jdk"
+    set -x JAVA_HOME "$HOME/.local/opt/jdk"
+    if not contains "$JAVA_HOME/bin" $PATH
+        set -x PATH "$JAVA_HOME/bin" $PATH
     end
-    if not contains "$HOME/apps/kotlin/bin" $PATH
-        set -x PATH "$HOME/apps/kotlin/bin" $PATH
+end
+if test -d "$HOME/.local/opt/kotlin"
+    if not contains "$HOME/.local/opt/kotlin/bin" $PATH
+        set -x PATH "$HOME/.local/opt/kotlin/bin" $PATH
     end
-    if not contains "$HOME/apps/gradle/bin" $PATH
-        set -x PATH "$HOME/apps/gradle/bin" $PATH
+end
+if test -d "$HOME/.local/opt/gradle"
+    if not contains "$HOME/.local/opt/gradle/bin" $PATH
+        set -x PATH "$HOME/.local/opt/gradle/bin" $PATH
     end
 end
 
 #
 # rust
 #
-if not contains "$HOME/.cargo/bin" $PATH
-    set -x PATH "$HOME/.cargo/bin" $PATH
+if test -d "$HOME/.cargo"
+    if not contains "$HOME/.cargo/bin" $PATH
+        set -x PATH "$HOME/.cargo/bin" $PATH
+    end
 end
 
 #
@@ -99,9 +100,9 @@ if not contains "$GOPATH/bin" $PATH
     set -x PATH "$GOPATH/bin" $PATH
 end
 
-# ~/bin
-if not contains "$HOME/bin" $PATH
-    set -x PATH "$HOME/bin" $PATH
+# ~/.local/bin
+if not contains "$HOME/.local/bin" $PATH
+    set -x PATH "$HOME/.local/bin" $PATH
 end
 
 # common alias

@@ -102,15 +102,21 @@ export PYTHONDONTWRITEBYTECODE=true
 #
 # java
 #
-export JAVA_HOME="$HOME/apps/jdk"
-pathprepend "$JAVA_HOME/bin"
-pathprepend "$HOME/apps/kotlin/bin"
-pathprepend "$HOME/apps/gradle/bin"
+if [[ -d "$HOME/.local/opt/jdk" ]]; then
+    export JAVA_HOME="$HOME/.local/opt/jdk"
+    pathprepend "$JAVA_HOME/bin"
+fi
+[[ -d "$HOME/.local/opt/kotlin" ]] \
+    && pathprepend "$HOME/.local/opt/kotlin/bin"
+[[ -d "$HOME/.local/opt/gradle" ]] \
+    && pathprepend "$HOME/.local/opt/gradle/bin"
 
 #
 # rust
 #
-pathprepend "$HOME/.cargo/bin"
+if [[ -d "$HOME/.cargo" ]]; then
+    pathprepend "$HOME/.cargo/bin"
+fi
 
 #
 # golang
@@ -118,8 +124,8 @@ pathprepend "$HOME/.cargo/bin"
 export GOPATH="$HOME/.go"
 pathprepend "$GOPATH/bin"
 
-# ~/bin
-pathprepend "$HOME/bin"
+# ~/.local/bin
+pathprepend "$HOME/.local/bin"
 
 # Tips and Tricks
 export CDPATH=.:~
@@ -136,11 +142,6 @@ alias egrep='egrep --color=auto'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
-
-# vi
-command -v nvim >/dev/null 2>&1 && alias vi='nvim' 
-[[ -d "$HOME/.SpaceVim/vimrc" ]] \
-    && alias spacevim="nvim -u $HOME/.SpaceVim/vimrc"
 
 # colors in manual pages
 man() {
