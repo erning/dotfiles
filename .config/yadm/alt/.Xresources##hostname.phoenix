@@ -59,7 +59,7 @@ Xcursor.size:                     0
 
 # URxvt.font:                       9x15,xft:TerminessTTFNerdFontMono
 # URxvt.font:                       xft:JetBrainsMono:size=12,xft:TerminessTTFNerdFontMono
-URxvt.font:                       xft:CascadiaCode:size=14,xft:TerminessTTFNerdFontMono,xft:SourceHanSans
+URxvt.font:                       xft:CascadiaCode:size=14,xft:JetBrainsMonoNerdFont,xft:SourceHanSans
 
 ! alternative font settings with 'terminus':
 ! URxvt.font:      -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
