@@ -1,9 +1,9 @@
 if command -qs nvim
     function vi --description "alias vi=nvim"
-        command nvim --clean $argv
+        command nvim $argv
     end
 else
     function vi --description "alias vi=vim"
-        command vim --clean $argv
+        command vim $argv
     end
 end
