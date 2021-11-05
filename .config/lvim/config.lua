@@ -21,6 +21,8 @@ lvim.leader = "space"
 lvim.keys.normal_mode["<C-s>"] = ":w<CR>"
 lvim.keys.insert_mode["<C-s>"] = "<ESC>:w<CR>a"
 lvim.keys.normal_mode["<ESC>"] = ":silent! nohls<CR>"
+lvim.keys.normal_mode["<TAB>"] = ":bnext<CR>"
+lvim.keys.normal_mode["<S-TAB>"] = ":bprevious<CR>"
 
 -- Predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
