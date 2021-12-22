@@ -48,11 +48,11 @@ pathappend () {
 # path
 if (shopt -q login_shell); then
     if [[ "$OSTYPE" == "darwin"* ]] ; then
-        setopt -s nullglob
+        shopt -s nullglob
         for v in /etc/paths /etc/paths.d/*; do
             PREFER_PATH="$PREFER_PATH:`paste -sd ':' $v`"
         done
-        setopt -u nullglob
+        shopt -u nullglob
     fi
     
     CLEAN_PATH=( /sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin)
@@ -81,6 +81,9 @@ fi
 #
 # homebrew
 #
+if [[ -x /opt/homebrew/bin/brew ]]; then
+    pathprepend "$(/opt/homebrew/bin/brew --prefix)/bin"
+fi
 export HOMEBREW_VERBOSE=1
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_AUTO_UPDATE=1
