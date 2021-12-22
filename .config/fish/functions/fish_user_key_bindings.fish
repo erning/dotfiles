@@ -1,5 +1,5 @@
-if test -f /usr/local/opt/fzf/shell/key-bindings.fish
-    source /usr/local/opt/fzf/shell/key-bindings.fish
+if command -qs brew; and test -f (brew --prefix)/opt/fzf/shell/key-bindings.fish
+    source (brew --prefix)/opt/fzf/shell/key-bindings.fish
 end
 
 if functions fzf_key_bindings

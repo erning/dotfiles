@@ -39,11 +39,8 @@ end
 #
 # homebrew
 #
-if test (uname -s) = Linux; and test -d /home/linuxbrew/.linuxbrew
-    set -x PATH \
-        /home/linuxbrew/.linuxbrew/bin \
-        /home/linuxbrew/.linuxbrew/sbin \
-        $PATH
+if command -qs /opt/homebrew/bin/brew
+    set -x PATH (/opt/homebrew/bin/brew --prefix)/bin $PATH
 end
 set -x HOMEBREW_VERBOSE 1
 set -x HOMEBREW_NO_ANALYTICS 1
