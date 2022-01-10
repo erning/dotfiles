@@ -70,5 +70,9 @@ lvim.lsp.automatic_servers_installation = false
 -- Additional Plugins
 lvim.plugins = {
     {"editorconfig/editorconfig-vim"},
+    {
+        "simrat39/rust-tools.nvim",
+        config = function() require('rust-tools').setup({}) end
+    },
 }
 
