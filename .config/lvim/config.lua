@@ -12,7 +12,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 lvim.log.level = "warn"
-lvim.format_on_save = true
+lvim.format_on_save = false
 lvim.colorscheme = "onedarker"
 
 -- Key Mappings
@@ -27,6 +27,7 @@ lvim.keys.normal_mode["<S-TAB>"] = ":bprevious<CR>"
 -- Predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.dashboard.active = true
+lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
@@ -69,10 +70,10 @@ lvim.lsp.automatic_servers_installation = false
 
 -- Additional Plugins
 lvim.plugins = {
-    {"editorconfig/editorconfig-vim"},
-    {
-        "simrat39/rust-tools.nvim",
-        config = function() require('rust-tools').setup({}) end
-    },
+  {"editorconfig/editorconfig-vim"},
+  {
+    "simrat39/rust-tools.nvim",
+    config = function() require('rust-tools').setup({}) end
+  },
 }
 
