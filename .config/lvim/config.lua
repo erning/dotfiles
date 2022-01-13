@@ -1,5 +1,7 @@
 
 -- General
+vim.opt.shell = "/bin/sh"
+
 vim.opt.backup = false
 vim.opt.undofile = false
 
@@ -18,14 +20,39 @@ lvim.colorscheme = "onedarker"
 -- Key Mappings
 lvim.leader = "space"
 
-lvim.keys.normal_mode["<C-s>"] = ":w<CR>"
-lvim.keys.insert_mode["<C-s>"] = "<ESC>:w<CR>a"
-lvim.keys.normal_mode["<ESC>"] = ":silent! nohls<CR>"
-lvim.keys.normal_mode["<TAB>"] = ":bnext<CR>"
-lvim.keys.normal_mode["<S-TAB>"] = ":bprevious<CR>"
+lvim.keys.insert_mode = {
+    -- Disable arrow keys
+    ["<Up>"] = "<NOP>",
+    ["<Down>"] = "<NOP>",
+    ["<Left>"] = "<NOP>",
+    ["<Right>"]= "<NOP>",
+    ["<C-s>"] = "<ESC>:w<CR>a",
+}
+
+lvim.keys.normal_mode = {
+    -- Resize with arrows
+    ["<Up>"] = ":resize +1<CR>",
+    ["<Down>"] = ":resize -1<CR>",
+    ["<Left>"] = ":vertical resize +1<CR>",
+    ["<Right>"]= ":vertical resize -1<CR>",
+
+    -- Alternative way to save
+    ["<C-s>"] = ":w<CR>",
+
+    ["<TAB>"] = ":bnext<CR>",
+    ["<S-TAB>"] = ":bprevious<CR>",
+}
+
+lvim.keys.term_mode = {
+}
+
+lvim.keys.visual_mode = {
+}
+
+lvim.keys.visual_block_mode = {
+}
 
 -- Predefined plugins
--- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.dashboard.active = true
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
@@ -70,10 +97,10 @@ lvim.lsp.automatic_servers_installation = false
 
 -- Additional Plugins
 lvim.plugins = {
-  {"editorconfig/editorconfig-vim"},
-  {
-    "simrat39/rust-tools.nvim",
-    config = function() require('rust-tools').setup({}) end
-  },
+    { "editorconfig/editorconfig-vim" },
+    {
+        "simrat39/rust-tools.nvim",
+        config = function() require('rust-tools').setup({}) end
+    },
 }
 
