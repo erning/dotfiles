@@ -127,4 +127,5 @@ export EDITOR='vim'
 # prompt
 #
 eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
 

@@ -180,3 +180,5 @@ export EDITOR='vim'
 # fi
 
 eval "$(starship init bash)"
+eval "$(direnv hook bash)"
+

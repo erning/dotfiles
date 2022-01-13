@@ -122,3 +122,10 @@ if command -qs starship
     starship init fish | source
 end
 
+
+#
+# direnv
+#
+if command -qs direnv
+    direnv hook fish | source
+end
