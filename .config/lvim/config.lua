@@ -1,5 +1,5 @@
-
 -- General
+vim.opt.guifont = "JetBrainsMono Nerd Font:h16"
 vim.opt.shell = "/bin/sh"
 
 vim.opt.backup = false
@@ -15,42 +15,37 @@ vim.opt.relativenumber = true
 
 lvim.log.level = "warn"
 lvim.format_on_save = false
-lvim.colorscheme = "onedarker"
 
 -- Key Mappings
 lvim.leader = "space"
 
 lvim.keys.insert_mode = {
-    -- Disable arrow keys
-    ["<Up>"] = "<NOP>",
-    ["<Down>"] = "<NOP>",
-    ["<Left>"] = "<NOP>",
-    ["<Right>"]= "<NOP>",
-    ["<C-s>"] = "<ESC>:w<CR>a",
+  -- Disable arrow keys
+  ["<Up>"] = "<NOP>",
+  ["<Down>"] = "<NOP>",
+  ["<Left>"] = "<NOP>",
+  ["<Right>"] = "<NOP>",
+  ["<C-s>"] = "<ESC>:w<CR>a",
 }
 
 lvim.keys.normal_mode = {
-    -- Resize with arrows
-    ["<Up>"] = ":resize +1<CR>",
-    ["<Down>"] = ":resize -1<CR>",
-    ["<Left>"] = ":vertical resize +1<CR>",
-    ["<Right>"]= ":vertical resize -1<CR>",
-
-    -- Alternative way to save
-    ["<C-s>"] = ":w<CR>",
-
-    ["<TAB>"] = ":bnext<CR>",
-    ["<S-TAB>"] = ":bprevious<CR>",
+  -- Resize with arrows
+  ["<Up>"] = ":resize +1<CR>",
+  ["<Down>"] = ":resize -1<CR>",
+  ["<Left>"] = ":vertical resize +1<CR>",
+  ["<Right>"] = ":vertical resize -1<CR>",
+  ["<C-s>"] = ":w<CR>",
 }
 
-lvim.keys.term_mode = {
-}
+lvim.keys.term_mode = {}
 
-lvim.keys.visual_mode = {
-}
+lvim.keys.visual_mode = {}
 
-lvim.keys.visual_block_mode = {
-}
+lvim.keys.visual_block_mode = {}
+
+-- lvim.builtin.which_key.mappings["W"] = {
+--   "<cmd>w !sudo tee % > /dev/null<CR>", "Save as root"
+-- }
 
 -- Predefined plugins
 lvim.builtin.dashboard.active = true
@@ -60,47 +55,44 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
 
 -- treesitter parsers
-lvim.builtin.treesitter.ensure_installed = {
-  "lua",
-  "vim",
-
-  "go",
-  "gomod",
-  "python",
-  "java",
-  "kotlin",
-  "typescript",
-  "javascript",
-  "c",
-  "cpp",
-  "rust",
-
-  "bash",
-  "fish",
-
-  "css",
-  "html",
-  "vue",
-
-  "dockerfile",
-  "toml",
-  "yaml",
-  "json",
-  "latex",
-}
-
-lvim.builtin.treesitter.ignore_install = { "haskell" }
+lvim.builtin.treesitter.ensure_installed = {}
+lvim.builtin.treesitter.ignore_install = {}
 lvim.builtin.treesitter.highlight.enabled = true
 
 -- LSP settings
 lvim.lsp.automatic_servers_installation = false
 
+-- colorscheme
+lvim.colorscheme = "tokyonight"
+
 -- Additional Plugins
 lvim.plugins = {
-    { "editorconfig/editorconfig-vim" },
-    {
-        "simrat39/rust-tools.nvim",
-        config = function() require('rust-tools').setup({}) end
-    },
-}
+  { "folke/tokyonight.nvim" },
+  {
+    "editorconfig/editorconfig-vim",
+    opt = true,
+    event = "BufRead",
+  },
+  {
+    "simrat39/rust-tools.nvim",
+    opt = true,
+    ft = { "rust" },
+    config = function()
+      require("rust-tools").setup {}
+    end,
+  },
 
+  {
+    "ray-x/lsp_signature.nvim",
+    opt = true,
+    event = "BufRead",
+    config = function()
+      require("lsp_signature").setup()
+    end,
+  },
+  {
+    "simrat39/symbols-outline.nvim",
+    opt = true,
+    cmd = "SymbolsOutline",
+  },
+}
