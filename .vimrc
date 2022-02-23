@@ -7,6 +7,9 @@ set noswapfile
 set nobackup
 set viminfo=
 
+let mapleader = " "
+let maplocalleader = " "
+set timeoutlen=250
 
 """
 call plug#begin('~/.vim/plugged')
@@ -101,7 +104,8 @@ set tabstop=8
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Uncomment to autostart the NERDTreefault
 " autocmd vimenter * NERDTree
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <Leader>e :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable='▸'
 let g:NERDTreeDirArrowCollapsible='▾'
 let NERDTreeShowLineNumbers=0
@@ -111,6 +115,7 @@ let NERDTreeMinimalUI=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => CtrlP
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <Leader>ff :CtrlP<CR>
 let g:ctrlp_show_hidden=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
