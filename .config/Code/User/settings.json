@@ -1,51 +1,27 @@
-// Place your settings in this file to overwrite the default settings
 {
     //
-    // THEMES
+    // UI
     //
     "workbench.iconTheme": "vscode-icons",
-    "workbench.colorTheme": "Night Owl (No Italics)",
-    "editor.fontFamily": "'Cascadia Code', 'JetBrainsMono', Menlo, Monaco",
-    "editor.fontSize": 18,
+    "workbench.colorTheme": "Tokyo Night Storm",
+
+    "editor.fontFamily": "'JetBrainsMono Nerd Font', Menlo, Monaco",
+    "editor.fontSize": 16,
+    "editor.lineHeight": 1.2,
     // "editor.fontWeight": "500",
     "editor.fontLigatures": true,
+
     "editor.rulers": [80, 120],
-    "explorer.enableDragAndDrop": false,
-    "window.restoreWindows": "none",
-    "window.zoomLevel": 0,
+    "editor.inlineSuggest.enabled": true,
+
     "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font', Menlo",
     "terminal.integrated.fontSize": 16,
     
+    "explorer.enableDragAndDrop": false,
+    "window.restoreWindows": "none",
+
+    //
     // Remote
+    //
     "remote.SSH.configFile": "~/.ssh/conf.d/vscode.conf",
-
-    //
-    // GoLang
-    //
-    "go.useLanguageServer": true,
-    "[go]": {
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": true,
-        },
-        // Optional: Disable snippets, as they conflict with completion ranking.
-        "editor.snippetSuggestions": "none",
-    },
-    "[go.mod]": {
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": true,
-        },
-    },
-    "gopls": {
-        // Add parameter placeholders when completing a function.
-        "usePlaceholders": true,
-        // If true, enable additional analyses with staticcheck.
-        // Warning: This will significantly increase memory usage.
-        "staticcheck": false,
-    },
-
-    //
-    // Swift
-    //
 }
