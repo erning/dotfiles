@@ -4,6 +4,7 @@
     autocrlf = input
     whitespace = trailing-space,space-before-tab,indent-with-non-tab
     excludesfile = /Users/erning/.gitignore_global
+    pager = delta
 
 [user]
     name = Zhang Erning
@@ -48,25 +49,24 @@
 [push]
     default = nothing
 
-[diff]
-    tool = vimdiff
-    guitool = smerge
+[interactive]
+    diffFilter = delta --color-only
 
-[difftool]
-    prompt = no
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    side-by-side = true
 
 [merge]
-    guitool = smerge
+    conflictstyle = diff3
 
-[mergetool "smerge"]
-    cmd = smerge mergetool \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
-    trustExitCode = true
+[diff]
+    colorMoved = default
 
-[difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
-
-[mergetool "vscode"]
-    cmd = code --wait $MERGED
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 
 [include]
     path = ~/.config/git/config.local
