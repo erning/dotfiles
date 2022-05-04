@@ -9,3 +9,5 @@ linters.setup {
 formatters.setup {
   { command = "black", filetypes = { "python" } },
 }
+
+vim.cmd [[ setlocal tabstop=4 shiftwidth=4 ]]

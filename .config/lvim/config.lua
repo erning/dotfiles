@@ -20,37 +20,31 @@ lvim.format_on_save = false
 lvim.leader = "space"
 
 lvim.keys.insert_mode = {
-  -- Disable arrow keys
-  ["<Up>"] = "<NOP>",
-  ["<Down>"] = "<NOP>",
-  ["<Left>"] = "<NOP>",
-  ["<Right>"] = "<NOP>",
-  ["<C-s>"] = "<ESC>:w<CR>a",
+  ["<C-g>"] = "<ESC>",
 }
 
 lvim.keys.normal_mode = {
-  -- Resize with arrows
-  ["<Up>"] = ":resize +1<CR>",
-  ["<Down>"] = ":resize -1<CR>",
-  ["<Left>"] = ":vertical resize +1<CR>",
-  ["<Right>"] = ":vertical resize -1<CR>",
-  ["<C-s>"] = ":w<CR>",
+  ["<C-g>"] = "<ESC>",
 }
 
-lvim.keys.term_mode = {}
+lvim.keys.term_mode = {
+  ["<C-g>"] = "<ESC>",
+}
 
-lvim.keys.visual_mode = {}
+lvim.keys.visual_mode = {
+  ["<C-g>"] = "<ESC>",
+}
 
-lvim.keys.visual_block_mode = {}
-
--- lvim.builtin.which_key.mappings["W"] = {
---   "<cmd>w !sudo tee % > /dev/null<CR>", "Save as root"
--- }
+lvim.keys.visual_block_mode = {
+  ["<C-g>"] = "<ESC>",
+}
 
 -- Predefined plugins
-lvim.builtin.dashboard.active = true
-lvim.builtin.notify.active = true
+lvim.builtin.notify.active = false
+
 lvim.builtin.terminal.active = true
+lvim.builtin.terminal.shade_terminals = false
+
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
 
@@ -63,11 +57,23 @@ lvim.builtin.treesitter.highlight.enabled = true
 lvim.lsp.automatic_servers_installation = false
 
 -- colorscheme
-lvim.colorscheme = "tokyonight"
+-- lvim.colorscheme = "onedarker"
+lvim.colorscheme = "one-nvim"
+-- lvim.colorscheme = "tokyonight"
 
 -- Additional Plugins
 lvim.plugins = {
-  { "folke/tokyonight.nvim" },
+  { "Th3Whit3Wolf/one-nvim" },
+  {
+    "folke/tokyonight.nvim",
+    config = function()
+      vim.g.tokyonight_style = "storm"
+      -- vim.g.tokyonight_italic_comments = false
+      -- vim.g.tokyonight_italic_keywords = false
+      -- vim.g.tokyonight_italic_functions = false
+      -- vim.g.tokyonight_italic_variables = false
+    end,
+  },
   {
     "editorconfig/editorconfig-vim",
     opt = true,
@@ -80,19 +86,5 @@ lvim.plugins = {
     config = function()
       require("rust-tools").setup {}
     end,
-  },
-
-  {
-    "ray-x/lsp_signature.nvim",
-    opt = true,
-    event = "BufRead",
-    config = function()
-      require("lsp_signature").setup()
-    end,
-  },
-  {
-    "simrat39/symbols-outline.nvim",
-    opt = true,
-    cmd = "SymbolsOutline",
   },
 }
