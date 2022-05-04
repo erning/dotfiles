@@ -40,7 +40,14 @@ end
 # homebrew
 #
 if command -qs /opt/homebrew/bin/brew
-    set -x PATH (/opt/homebrew/bin/brew --prefix)/bin $PATH
+    set -l PREFIX (/opt/homebrew/bin/brew --prefix)
+    set -x PATH "$PREFIX/bin" "$PREFIX/sbin" $PATH
+    if not contains "$PREFIX/share/man" $MANPATH
+        set -x MANPATH "$PREFIX/share/man" $MANPATH
+    end
+    if not contains "$PREFIX/share/info" $INFOPATH
+        set -x INFOPATH "$PREFIX/share/info" $INFOPATH
+    end
 end
 set -x HOMEBREW_VERBOSE 1
 set -x HOMEBREW_NO_ANALYTICS 1
@@ -50,7 +57,7 @@ set -x HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK 1
 set -x HOMEBREW_CURL_RETRIES 3
 
 #
-# python
+# pythont
 #
 
 # pip should only run if there is a virtualenv currently activated
@@ -129,3 +136,4 @@ end
 if command -qs direnv
     direnv hook fish | source
 end
+
