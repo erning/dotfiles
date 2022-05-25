@@ -13,13 +13,14 @@ set timeoutlen=250
 
 """
 call plug#begin('~/.vim/plugged')
-Plug 'morhetz/gruvbox'                  " color scheme
+Plug 'joshdick/onedark.vim'             " color scheme
 Plug 'sheerun/vim-polyglot'             " syntax highlight
 Plug 'editorconfig/editorconfig-vim'    " editorconfig
+Plug 'itchyny/lightline.vim'            " statusline
+Plug 'liuchengxu/vim-which-key'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'vim-airline/vim-airline'          " Airline
-" Plug 'vim-airline/vim-airline-themes' " Airline Themes
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 if has('macunix')
@@ -66,7 +67,8 @@ set relativenumber
 
 " scheme
 syntax on
-silent! color gruvbox
+" silent! color gruvbox
+silent! colorscheme onedark
 set background=dark
 
 " search
@@ -79,12 +81,15 @@ nnoremap <esc><esc> :silent! nohls<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Airline
+" => lightline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set laststatus=2
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-" let g:airline_theme='angr'
+set laststatus=2
+set noshowmode
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => WhichKey
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -113,10 +118,10 @@ let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => CtrlP
+" => fzf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <Leader>ff :CtrlP<CR>
-let g:ctrlp_show_hidden=1
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>fb :Buffers<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Mouse and Clipboard
