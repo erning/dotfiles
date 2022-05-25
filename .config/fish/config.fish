@@ -41,7 +41,12 @@ end
 #
 if command -qs /opt/homebrew/bin/brew
     set -l PREFIX (/opt/homebrew/bin/brew --prefix)
-    set -x PATH "$PREFIX/bin" "$PREFIX/sbin" $PATH
+    if not contains "$PREFIX/bin" $PATH
+        set -x PATH "$PREFIX/bin" $PATH
+    end
+    if not contains "$PREFIX/sbin" $PATH
+        set -x PATH "$PREFIX/sbin" $PATH
+    end
     if not contains "$PREFIX/share/man" $MANPATH
         set -x MANPATH "$PREFIX/share/man" $MANPATH
     end
