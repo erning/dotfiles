@@ -13,6 +13,9 @@ vim.opt.smarttab = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+vim.opt.colorcolumn = "80"
+vim.opt.cursorline = true
+vim.opt.cursorcolumn = true
 vim.opt.cmdheight = 1
 
 lvim.log.level = "warn"
@@ -55,7 +58,7 @@ lvim.builtin.terminal.active = true
 lvim.builtin.terminal.shade_terminals = true
 
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 0
+lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 
 -- treesitter parsers
 lvim.builtin.treesitter.ensure_installed = {}
@@ -67,7 +70,6 @@ lvim.lsp.automatic_servers_installation = false
 
 -- colorscheme
 -- lvim.colorscheme = "onedarker"
--- lvim.colorscheme = "tokyonight"
 lvim.colorscheme = "onedark"
 
 -- Additional Plugins
