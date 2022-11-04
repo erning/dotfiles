@@ -52,7 +52,7 @@ lvim.keys.visual_block_mode = {
 }
 
 -- Predefined plugins
-lvim.builtin.notify.active = true
+-- lvim.builtin.notify.active = true
 
 lvim.builtin.terminal.active = true
 lvim.builtin.terminal.shade_terminals = true
@@ -66,7 +66,9 @@ lvim.builtin.treesitter.ignore_install = {}
 lvim.builtin.treesitter.highlight.enabled = true
 
 -- LSP settings
-lvim.lsp.automatic_servers_installation = false
+-- lvim.lsp.installer.setup.automatic_installation = false
+-- lvim.lsp.automatic_servers_installation = false
+lvim.lsp.automatic_configuration.skipped_servers = { "rust_analyzer" }
 
 -- colorscheme
 -- lvim.colorscheme = "onedarker"
@@ -82,10 +84,11 @@ lvim.plugins = {
   },
   {
     "simrat39/rust-tools.nvim",
-    opt = true,
-    ft = { "rust" },
+    -- opt = true,
+    -- ft = { "rust", "rs" },
     config = function()
       require("rust-tools").setup {}
     end,
   },
 }
+
