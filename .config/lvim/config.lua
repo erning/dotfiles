@@ -66,9 +66,10 @@ lvim.builtin.treesitter.ignore_install = {}
 lvim.builtin.treesitter.highlight.enabled = true
 
 -- LSP settings
--- lvim.lsp.installer.setup.automatic_installation = false
--- lvim.lsp.automatic_servers_installation = false
-lvim.lsp.automatic_configuration.skipped_servers = { "rust_analyzer" }
+lvim.lsp.installer.setup = {
+  ensure_installed = {},
+  automatic_installation = false
+}
 
 -- colorscheme
 -- lvim.colorscheme = "onedarker"
