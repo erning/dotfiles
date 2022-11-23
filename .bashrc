@@ -82,9 +82,18 @@ fi
 # homebrew
 #
 if [[ -x /opt/homebrew/bin/brew ]]; then
-    pathprepend "$(/opt/homebrew/bin/brew --prefix)/bin"
+    HOMEBREW_PREFIX="$(/opt/homebrew/bin/brew --prefix)"
 fi
-export HOMEBREW_VERBOSE=1
+if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+    HOMEBREW_PREFIX="$(/home/linuxbrew/.linuxbrew/bin/brew --prefix)"
+fi
+if [[ -n "$HOMEBREW_PREFIX" ]]; then
+    pathprepend "$HOMEBREW_PREFIX/sbin"
+    pathprepend "$HOMEBREW_PREFIX/bin"
+    # pathprepend "$HOMEBREW_PREFIX/share/man" MANPATH
+    # pathprepend "$HOMEBREW_PREFIX/share/info" INFOPATH
+fi
+# export HOMEBREW_VERBOSE=1
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_AUTO_UPDATE_SECS=86400

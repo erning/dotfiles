@@ -39,30 +39,42 @@ end
 #
 # homebrew
 #
+set -l HOMEBREW_PREFIX
 if command -qs /opt/homebrew/bin/brew
-    set -l PREFIX (/opt/homebrew/bin/brew --prefix)
-    if not contains "$PREFIX/bin" $PATH
-        set -x PATH "$PREFIX/bin" $PATH
+    set HOMEBREW_PREFIX (/opt/homebrew/bin/brew --prefix)
+end
+if command -qs /home/linuxbrew/.linuxbrew/bin/brew
+    set HOMEBREW_PREFIX (/home/linuxbrew/.linuxbrew/bin/brew --prefix)
+end
+if test -n "$HOMEBREW_PREFIX"
+    if not contains "$HOMEBREW_PREFIX/sbin" $PATH
+        set -x PATH "$HOMEBREW_PREFIX/sbin" $PATH
     end
-    if not contains "$PREFIX/sbin" $PATH
-        set -x PATH "$PREFIX/sbin" $PATH
+    if not contains "$HOMEBREW_PREFIX/bin" $PATH
+        set -x PATH "$HOMEBREW_PREFIX/bin" $PATH
     end
-    if not contains "$PREFIX/share/man" $MANPATH
-        set -x MANPATH "$PREFIX/share/man" $MANPATH
+    if not contains "$HOMEBREW_PREFIX/share/man" $MANPATH
+        set -x MANPATH "$HOMEBREW_PREFIX/share/man" $MANPATH
     end
-    if not contains "$PREFIX/share/info" $INFOPATH
-        set -x INFOPATH "$PREFIX/share/info" $INFOPATH
+    if not contains "$HOMEBREW_PREFIX/share/info" $INFOPATH
+        set -x INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH
     end
 end
-set -x HOMEBREW_VERBOSE 1
+# set -x HOMEBREW_VERBOSE 1
 set -x HOMEBREW_NO_ANALYTICS 1
 set -x HOMEBREW_NO_AUTO_UPDATE 1
 set -x HOMEBREW_AUTO_UPDATE_SECS 86400
 set -x HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK 1
 set -x HOMEBREW_CURL_RETRIES 3
 
+set -l HOMEBREW_MIRROR_PREFIX "https://mirrors.ustc.edu.cn"
+set -x HOMEBREW_BOTTLE_DOMAIN "$HOMEBREW_MIRROR_PREFIX/homebrew-bottles"
+# set -x HOMEBREW_BREW_GIT_REMOTE="$HOMEBREW_MIRROR_PREFIX/brew.git"
+# set -x HOMEBREW_CORE_GIT_REMOTE="$HOMEBREW_MIRROR_PREFIX/homebrew-core.git"
+
+
 #
-# pythont
+# python
 #
 
 # pip should only run if there is a virtualenv currently activated

@@ -43,10 +43,27 @@ export PATH
 #
 # homebrew
 #
+
 if [[ -x /opt/homebrew/bin/brew ]]; then
     path=("$(/opt/homebrew/bin/brew --prefix)/bin" $path)
 fi
-export HOMEBREW_VERBOSE=1
+if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+    path=("$(/home/linuxbrew/.linuxbrew/bin/brew --prefix)/bin" $path)
+fi
+
+if [[ -x /opt/homebrew/bin/brew ]]; then
+    HOMEBREW_PREFIX="$(/opt/homebrew/bin/brew --prefix)"
+fi
+if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+    HOMEBREW_PREFIX="$(/home/linuxbrew/.linuxbrew/bin/brew --prefix)"
+fi
+if [[ -n "$HOMEBREW_PREFIX" ]]; then
+    path=("$HOMEBREW_PREFIX/sbin" $path)
+    path=("$HOMEBREW_PREFIX/bin" $path)
+    # MANPATH=("$HOMEBREW_PREFIX/share/man" $MANPATH)
+    # INFOPATH=("$HOMEBREW_PREFIX/share/info" $INFOPATH)
+fi
+# export HOMEBREW_VERBOSE=1
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_AUTO_UPDATE_SECS=86400
