@@ -54,10 +54,10 @@ if test -n "$HOMEBREW_PREFIX"
         set -x PATH "$HOMEBREW_PREFIX/bin" $PATH
     end
     if not contains "$HOMEBREW_PREFIX/share/man" $MANPATH
-        set -x MANPATH "$HOMEBREW_PREFIX/share/man" $MANPATH
+        set -x MANPATH "$HOMEBREW_PREFIX/share/man:" $MANPATH
     end
     if not contains "$HOMEBREW_PREFIX/share/info" $INFOPATH
-        set -x INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH
+        set -x INFOPATH "$HOMEBREW_PREFIX/share/info:" $INFOPATH
     end
 end
 # set -x HOMEBREW_VERBOSE 1
