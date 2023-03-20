@@ -105,6 +105,22 @@ if test -d "$HOME/.local/opt/gradle"
 end
 
 #
+# android
+#
+if test -d "$HOME/Library/Android"
+    set -x ANDROID_HOME "$HOME/Library/Android/sdk"
+    if not contains "$ANDROID_HOME/tools" $PATH
+        set -x PATH "$ANDROID_HOME/tools" $PATH
+    end
+    if not contains "$ANDROID_HOME/tools/bin" $PATH
+        set -x PATH "$ANDROID_HOME/tools/bin" $PATH
+    end
+    if not contains "$ANDROID_HOME/platform-tools" $PATH
+        set -x PATH "$ANDROID_HOME/platform-tools" $PATH
+    end
+end
+
+#
 # rust
 #
 if test -d "$HOME/.cargo"
