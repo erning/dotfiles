@@ -118,6 +118,9 @@ if test -d "$HOME/Library/Android"
     if not contains "$ANDROID_HOME/platform-tools" $PATH
         set -x PATH "$ANDROID_HOME/platform-tools" $PATH
     end
+    if not contains "$ANDROID_HOME/cmdline-tools/latest/bin" $PATH
+        set -x PATH "$ANDROID_HOME/cmdline-tools/latest/bin" $PATH
+    end
 end
 
 #
