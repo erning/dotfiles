@@ -1,6 +1,6 @@
-if command -qs lvim
-    function vi --description "alias vi=lvim"
-        command lvim $argv
+if command -qs nvim
+    function vi --description "alias vi=nvim"
+        command nvim $argv
     end
 else
     function vi --description "alias vi=vim"
