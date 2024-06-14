@@ -1,0 +1,14 @@
+[font]
+size = 16.0
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[window]
+decorations = "full"
+opacity = 0.95
+
+[window.dimensions]
+columns = 80
+lines = 25
