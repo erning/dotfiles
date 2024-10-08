@@ -3,25 +3,31 @@
     // UI
     //
     "workbench.iconTheme": "vscode-icons",
-    "workbench.colorTheme": "Tokyo Night Storm",
-
-    "editor.fontFamily": "'JetBrainsMono Nerd Font', Menlo, Monaco",
+    "editor.fontFamily": "'JetBrainsMono Nerd Font', Menlo, 'LXGW WenKai Mono'",
     "editor.fontSize": 16,
-    "editor.lineHeight": 1.2,
-    // "editor.fontWeight": "500",
-    "editor.fontLigatures": true,
-
-    "editor.rulers": [80, 120],
+    "editor.lineHeight": 1.3,
+    "editor.fontLigatures": false,
+    "editor.rulers": [
+        80,
+        120
+    ],
     "editor.inlineSuggest.enabled": true,
-
-    "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font', Menlo",
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "editor.formatOnSave": true,
+    //
+    "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font', Menlo, 'LXGW WenKai Mono'",
     "terminal.integrated.fontSize": 16,
-    
     "explorer.enableDragAndDrop": false,
     "window.restoreWindows": "none",
-
     //
     // Remote
-    //
+    //    
     "remote.SSH.configFile": "~/.ssh/conf.d/vscode.conf",
+    //
+    // plugins
+    //
+    "tinymist.formatterMode": "typstyle",
+    //
+    //
+    //
 }
