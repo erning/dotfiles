@@ -69,5 +69,6 @@
 	required = true
 
 [include]
-    path = ~/.config/git/config.local
+    path = config.local
+    path = config.tools
 
